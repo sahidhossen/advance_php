@@ -19,9 +19,7 @@ create_db_connect();
 
 //include all of the setting below
 require_once(CORE_F.'/url-access.php');
-
-
-
+require_once(CORE_F.'/main-page.php');
 if(!defined('PUBLIC_DIR'))
     define('PUBLIC_DIR',ABSPATH.'public');
 

@@ -18,8 +18,20 @@
                  <?php  //var_dump($_SERVER); ?>
              </pre>
              <?php
-           echo get_stylesheet_files('style');
-//             echo get_root_folder(); ?>
+           global $main_db;
+           $result =  $main_db->get_results("SELECT * FROM  `main_page`");
+//             echo $main_db->last_query;
+             foreach($result as $data) {
+                 echo $data->name . ",";
+             }
+        global $main_page;
+             $allResult = $main_page->get_page_by_id(3);
+            echo  $main_db->last_error;
+             ?>
+             <pre>
+            <?php  var_dump($allResult); ?>
+
+             </pre>
          </div>
 
 

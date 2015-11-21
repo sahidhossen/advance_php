@@ -8,13 +8,13 @@
  */
 
 // Your current databsae name
-define('DATABASE','DatabaseName');
+define('DATABASE','blogs');
 
 define('USER','root');
 
 define('HOST','localhost');
 
-define('PASSWORD','password');
+define('PASSWORD','');
 
 
 $table_prefix="art_";

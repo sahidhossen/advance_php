@@ -5,8 +5,17 @@
  * Date: 18-11-15
  * Time: 20.44
  */
-function hello(){
+
+
+function pretty_print( $result  ){
     echo '<pre>';
-    var_dump($_SERVER);
+    var_dump($result);
     echo '</pre>';
+}
+
+function removeSlash($string) {
+    if( $string[strlen($string) - 1]== '/')
+        $string = rtrim($string, '/');
+
+    return $string;
 }

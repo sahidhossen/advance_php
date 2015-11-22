@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2015 at 06:55 PM
+-- Generation Time: Nov 22, 2015 at 03:37 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -40,6 +40,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
+INSERT INTO `admin` (`id`, `f_name`, `l_name`, `username`, `pass`, `email`, `currentDate`) VALUES
+(0, 'Rafiq', 'Hossain', 'admin', 'admin', 'admin@me.com', '2015-11-21 09:12:36');
 
 -- --------------------------------------------------------
 
@@ -60,6 +62,10 @@ CREATE TABLE IF NOT EXISTS `main_page` (
 -- Dumping data for table `main_page`
 --
 
+INSERT INTO `main_page` (`id`, `user_id`, `name`, `position`, `date`) VALUES
+(1, 1, 'HTML', 1, '2015-11-21'),
+(2, 1, 'CSS (Casecade Style Sheet)', 3, '2015-11-21'),
+(3, 1, 'Javascript', 3, '2015-11-22');
 
 -- --------------------------------------------------------
 
@@ -90,19 +96,25 @@ CREATE TABLE IF NOT EXISTS `posts` (
 --
 
 CREATE TABLE IF NOT EXISTS `sub_page` (
-  `id` int(11) NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `main_page_id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
   `position` int(11) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `sub_page`
 --
 
+INSERT INTO `sub_page` (`id`, `user_id`, `main_page_id`, `name`, `position`, `date`) VALUES
+(1, 1, 1, 'HTML Introduction ', 1, '2015-11-22'),
+(2, 1, 1, 'About HTML Tags', 2, '2015-11-22'),
+(3, 1, 1, 'DIV Tags ', 3, '2015-11-22'),
+(4, 1, 2, 'CSS Introduction ', 1, '2015-11-22'),
+(5, 1, 2, 'CSS Basic ', 2, '2015-11-22');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

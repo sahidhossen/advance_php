@@ -71,6 +71,30 @@ body {
 	color: #777777;
 	text-align: justify;
 }
+.shadow {
+	position: fixed;
+	height:100%;
+	width:100%;
+	top:0;
+	right: 0;
+	bottom: 0;
+	left:0;
+	background: rgba(0, 0, 0, 0.5);
+
+}
+
+.loginform {
+
+	height:300px;
+	width:450px;
+	background: #fff;
+	margin:50px auto;
+	padding:10px;
+}
+.loginform form {
+	width:80%;
+	margin:30px auto;
+}
 .sidebar {
 	margin: 0;
 	padding: 0;

@@ -8,25 +8,73 @@
 
 class session {
 
-    public $is_login;
+    public $logedIn;
 
+    public $userID;
+
+    public $message='';
 
     public function __construct()
     {
         session_start();
+
+        $this->checkLogin();
+
+        $this->check_msg();
     }
 
+    public function is_logedIn( ) {
 
-    public function loged_in( ){
-        $user = new User();
+        return $this->logedIn;
 
-        if( isset($_SESSION['user'])){
-            $this->is_login = true;
-        }else {
-            $this->loged_in = false;
+    }
+
+    public function login( $user='') {
+        if( $user ) {
+            $this->userID = $_SESSION['username'] = $user;
+
+            $this->logedIn = true;
         }
+    }
+
+
+
+    private function checkLogin() {
+        if( isset($_SESSION['username']) ) {
+            $this->userID = $_SESSION['username'];
+            // if( $_SESSION['access']==1)
+            // $this->s_checked = $_SESSION['s_check'];
+
+            $this->logedIn = true;
+
+        }else {
+            unset( $this->userID );
+
+            $this->logedIn = false;
+        }
+    }
+
+    public function message($msg='') {
+        if( !empty($msg) )
+            $_SESSION['message'] = $msg;
+        else
+            return $this->message;
 
     }
+
+    private function check_msg() {
+        if( isset($_SESSION['message'])) {
+            $this->message = $_SESSION['message'];
+            unset($_SESSION['message']);
+        }else {
+            $this->message='';
+        }
+    }
+
 
 }
 
+
+global $sesion;
+
+$sesion = new session();

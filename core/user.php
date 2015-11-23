@@ -10,12 +10,15 @@ class User {
 
     public $user_id;
 
+    private $table = "admin";
 
-    public function check_user( $username, $pass ){
+
+    public function is_login( $username, $pass ){
 
         global $main_db;
 
         $query = $main_db->get_rows('SELECT *FROM '.$this->table." WHERE username='".$username."' AND pass='".$pass."' LIMIT 1");
+
 
         if($query)
             return true;

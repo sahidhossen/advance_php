@@ -1,24 +1,7 @@
 <?php
-session_start();
-$_SESSION['username'] = "Sahidhossen";
 global $main_page;
 $subpage = new sub_page();
-
-if(isset($_SESSION['username'])) {
-     echo $_SESSION['username'];
-
-}else {
-    echo "I did not found you";
-}
-
-//unset($_SESSION['username']);
-
-if(!isset($_SESSION['username']))
-    echo "YOu loged out";
-
-
-
-
+ echo $_SESSION['username'];
 ?>
 <?php include('header.php'); ?>
 

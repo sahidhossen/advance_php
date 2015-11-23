@@ -1,3 +1,8 @@
+<?php
+global $sesion;
+if(!$sesion->is_logedIn())
+    header('Location:'.get_home_url().'/login.php');
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,6 +22,7 @@
 <div class="container main-container ">
     <header class="row header">
         <h1 class="title text-center"> Web Corp Incorporation </h1>
+        <p class="welcome"> <?php   if($sesion->message()) echo $sesion->message(); ?> </p>
     </header>
 
     <div class="row main-content">

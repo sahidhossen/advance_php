@@ -1,10 +1,15 @@
 <?php
-//define('CORE_F',ABSPATH.'core/');
-if(file_exists(ABSPATH.'main-config.php')) {
-    require_once(ABSPATH."main-config.php");
+define('CORE_F',ABSPATH.'core/');
+define('INC','includes');
 
-    require_once(INC.'/load-pages.php');
-}else {
-    define('INC',ABSPATH.'includes');
-    require_once(INC."/config-error.php");
+
+if(!isset($page_header)) {
+
+    $page_header = true;
+
+    require_once( dirname(__FILE__).'/load.php' );
+
+    require_once( ABSPATH . INC . '/load-pages.php' );
 }
+
+

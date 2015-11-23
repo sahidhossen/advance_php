@@ -14,7 +14,7 @@
 
 function my_safe_pages( $page ){
 
-    $safe_pages = array("contact", "about", "index", "main-page");
+    $safe_pages = array("sub-page", "about", "index", "main-page",'single');
 
     if($page !='') {
     if (in_array($page, $safe_pages))

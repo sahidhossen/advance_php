@@ -43,3 +43,17 @@ function get_stylesheet_files($file_name=""){
 function get_home_url(){
     return is_ssl().'/'.get_root_folder();
 }
+
+function get_link( $page = '' ){
+
+    if($page !='' ) {
+        if (my_safe_pages($page))
+            $page_name = $page;
+        $$page_name = 'index';
+    }
+
+   if(file_exists(PUBLIC_DIR.$page_name.'.php'))
+        return PUBLIC_DIR.$page_name;
+    return PUBLIC_DIR.$page_name.'.php';
+
+}

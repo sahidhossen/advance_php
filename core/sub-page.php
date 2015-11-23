@@ -32,4 +32,19 @@ class sub_page {
         return NULL;
     }
 
+    /*
+     * Get Page by ID
+     * */
+
+    public function get_page_by_id( $ID ){
+
+        global $main_db;
+
+        $query = $main_db->get_rows("SELECT *FROM ".$this->table." WHERE id =".$ID );
+
+        if( $query )
+            return $query;
+        return NULL;
+    }
+
 }

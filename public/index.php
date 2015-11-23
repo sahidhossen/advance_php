@@ -1,9 +1,32 @@
+<?php
+session_start();
+$_SESSION['username'] = "Sahidhossen";
+global $main_page;
+$subpage = new sub_page();
+
+if(isset($_SESSION['username'])) {
+     echo $_SESSION['username'];
+
+}else {
+    echo "I did not found you";
+}
+
+//unset($_SESSION['username']);
+
+if(!isset($_SESSION['username']))
+    echo "YOu loged out";
+
+
+
+
+?>
 <?php include('header.php'); ?>
 
 <?php include("sidebar.php"); ?>
 
          <div class="col-md-9 content">
             <div class="content-area row">
+
                 <div class="col-md-4">
                     <div class="pages">
                         <p class="text-center icon"> <span class="fa fa-html5"></span></p>
@@ -44,28 +67,7 @@
                     </div>
                 </div>
 
-                <?php
-                $request = $_SERVER['REQUEST_URI'];
 
-                $params = split("/", removeSlash($request));
-                $safe_pages = array("contact", "home", "prices", "portfolio");
-                $dirs = array("errors", "admin");
-                array_shift($params);
-                var_dump($params);
-               echo  $action = isset($params[1]) && !empty($params[1])?$params[1]:'index';
-                if(in_array($action, $safe_pages)) {
-                   // include($params[0]."/".$params[1].".php"); // Something like that?
-                    var_dump($params);
-                } else {
-                  //  include("404.php");
-                    echo "error";
-                }
-
-                $subpage = new sub_page();
-                $result = $subpage->get_page_by_mainPage(1);
-                pretty_print($result);
-
-                ?>
 
             </div>
          </div>

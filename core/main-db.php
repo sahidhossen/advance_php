@@ -155,6 +155,26 @@ class main_db{
         return $this->last_result;
     }
 
+
+//    Get rows form the database
+
+    public function get_rows( $query ) {
+        $return = '';
+        if( $query ) {
+            $results = $this->get_results( $query );
+
+            if( $results ) {
+                foreach ($results as $result) {
+                    $return = $result;
+                }
+            }
+        }else {
+            return null;
+        }
+        return $return;
+    }
+
+
 //    public function show_errors( $show = true ) {
 //    $errors = $this->show_errors;
 //    $this->show_errors = $show;

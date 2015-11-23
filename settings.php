@@ -21,6 +21,11 @@ create_db_connect();
 require_once(CORE_F.'/url-access.php');
 require_once(CORE_F.'/main-page.php');
 require_once(CORE_F.'/sub-page.php');
+require_once(CORE_F.'/session.php');
+require_once(CORE_F.'/user.php');
+
+
+
 if(!defined('PUBLIC_DIR'))
     define('PUBLIC_DIR',ABSPATH.'public');
 

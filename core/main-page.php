@@ -21,7 +21,7 @@ class main_page {
 
     public function get_page_by_id( $id ){
         global $main_db;
-        $query = $main_db->get_results("SELECT *FROM ".$this->table." WHERE id=".$id);
+        $query = $main_db->get_rows("SELECT *FROM ".$this->table." WHERE id=".$id);
         if($query)
             return $query;
         return NULL;

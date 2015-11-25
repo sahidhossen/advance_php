@@ -42,7 +42,7 @@ class main_db{
     */
     var $insert_id = 0;
 
-
+    public $num_rows = 0;
     /*
     * Affect rows
     */
@@ -75,7 +75,8 @@ class main_db{
         if($this->connect){
             $this->dbconnect($this->dbname, $this->connect);
         }else {
-            $this->errors = "Sorry your database connection fail.";
+            echo  "Sorry your database connection fail.";
+            exit();
         }
     }
 
@@ -175,11 +176,42 @@ class main_db{
     }
 
 
-//    public function show_errors( $show = true ) {
-//    $errors = $this->show_errors;
-//    $this->show_errors = $show;
-//    return $errors;
-//}
+    /*
+     * Number of rows count
+     * */
+
+
+
+// insert into table with push array
+
+    public function insert($table, $data, $type='INSERT') {
+        $this->insert_id =0;
+        $fields = array_keys($data);
+        $values = array_values($data);
+
+        $sql = "{$type} INTO `$table` (`" . implode( '`,`', $fields ) . "`) VALUES ('" . implode( "','", $values ) . "')";
+        return $this->query($sql);
+    }
+
+// update table
+    public function update( $table, $data, $where) {
+        if ( ! is_array( $data ) || ! is_array( $where ) )
+            return false;
+
+        $bits = $wheres = array();
+        foreach ( (array)  $data  as $field => $value ) {
+
+            $bits[] = "`$field`='{$value}'";
+        }
+
+        foreach ($where as $field => $value) {
+            $value = (is_numeric($value)) ? (int) $value : "`$value`";
+            $wheres[] = "`$field` = {$value}";
+        }
+
+        $sql = "UPDATE `$table` SET ".implode(', ', $bits)." WHERE ".implode(' AND ', $wheres)."";
+        return $this->query($sql);
+    }
 
     /*
      * Flush everything before create a query

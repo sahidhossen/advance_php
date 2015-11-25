@@ -1,9 +1,7 @@
 <?php
 global $main_page;
 $subpage = new sub_page();
- echo $_SESSION['username'];
-?>
-<?php include('header.php'); ?>
+ include('header.php'); ?>
 
 <?php include("sidebar.php"); ?>
 

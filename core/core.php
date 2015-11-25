@@ -10,11 +10,12 @@
  * My All pages neet to insert into this array
  * */
 
-
+global $safe_pages;
+$safe_pages = array("sub-page", "about", "index", "main-page",'single');
 
 function my_safe_pages( $page ){
 
-    $safe_pages = array("sub-page", "about", "index", "main-page",'single');
+    global $safe_pages ;
 
     if($page !='') {
     if (in_array($page, $safe_pages))
@@ -42,6 +43,9 @@ function get_page_name()
 
     return $page_name;
 }
+
+
+
 
 function create_db_connect(){
     global $main_db;

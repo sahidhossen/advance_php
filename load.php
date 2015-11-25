@@ -8,7 +8,6 @@
 
 define( 'ABSPATH', dirname(__FILE__) . '/' );
 
-
 if(file_exists(ABSPATH.'main-config.php')) {
 
     require_once(ABSPATH."main-config.php");

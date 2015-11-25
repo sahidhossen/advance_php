@@ -10,7 +10,7 @@ class session {
 
     public $logedIn;
 
-    public $userID;
+    public $userName;
 
     public $message='';
 
@@ -38,17 +38,23 @@ class session {
     }
 
 
+    public function logout( ) {
+        unset($_SESSION['username']);
+        unset($this->userName);
+        $this->logedIn = false;
+    }
+
 
     private function checkLogin() {
         if( isset($_SESSION['username']) ) {
-            $this->userID = $_SESSION['username'];
+            $this->userName = $_SESSION['username'];
             // if( $_SESSION['access']==1)
             // $this->s_checked = $_SESSION['s_check'];
 
             $this->logedIn = true;
 
         }else {
-            unset( $this->userID );
+            unset( $this->userName );
 
             $this->logedIn = false;
         }

@@ -19,7 +19,9 @@ intial_constant();
 create_db_connect();
 
 //include all of the setting below
+
 require_once(CORE_F.'/url-access.php');
+require_once(CORE_F.'/admin.php');
 require_once(CORE_F.'/main-page.php');
 require_once(CORE_F.'/sub-page.php');
 require_once(CORE_F.'/session.php');

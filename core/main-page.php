@@ -27,6 +27,19 @@ class main_page {
         return NULL;
     }
 
+    /*
+     * Count number of pages
+     * */
+
+   public function total_page(){
+        global $main_db;
+       $query = $main_db->query("SELECT * FROM ".$this->table);
+
+       if($query)
+           return $main_db->num_rows;
+       return NULL;
+    }
+
 }
 global $main_page;
 $main_page = new main_page();

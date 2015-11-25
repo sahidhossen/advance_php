@@ -1,7 +1,6 @@
 <?php
-global $sesion;
-if(!$sesion->is_logedIn())
-    header('Location:'.get_home_url().'/login.php');
+global $sesion, $main_db;
+$user = new User();
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,8 +20,28 @@ if(!$sesion->is_logedIn())
 
 <div class="container main-container ">
     <header class="row header">
-        <h1 class="title text-center"> Web Corp Incorporation </h1>
-        <p class="welcome"> <?php   if($sesion->message()) echo $sesion->message(); ?> </p>
+        <div class="navbar navbar-default">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+<!--                        <img alt="Brand" class="img-responsive" src="--><?php //echo admin_url('home') ?><!--/assets/img/logo.png">-->
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav pull-right">
+                        <?php if( $user->full_name( $sesion->userName ) != NULL ): ?>
+                        <li class="active username"><a href="<?php echo get_home_url() ?>/logout.php"> <?php echo $user->full_name( $sesion->userName); ?> </a></li>
+                        <?php endif; ?>
+                        <?php if( $sesion->is_logedIn()): ?>
+                        <li><a href="<?php echo get_home_url() ?>/logout.php"> Logout </a></li>
+                        <li><a href="<?php echo admin_home() ?>"> Edit </a></li>
+                        <?php else: ?>
+                        <li class="active"><a href="<?php echo get_home_url() ?>/login.php"> Login </a></li>
+                        <?php endif; ?>
+
+                    </ul>
+                </div>
+        </div>
     </header>
 
     <div class="row main-content">

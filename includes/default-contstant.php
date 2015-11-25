@@ -9,4 +9,7 @@ function intial_constant(){
 
     if(!defined('PUBLIC_DIR'))
         define('PUBLIC_DIR',ABSPATH.'public/');
+
+    if(!defined('ADMIN_DIR'))
+        define('ADMIN_DIR',ABSPATH.'admin/');
 }

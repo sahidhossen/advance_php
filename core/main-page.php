@@ -38,6 +38,38 @@ class main_page {
        if($query)
            return $main_db->num_rows;
        return NULL;
+    } 
+
+
+    /*
+    Insert into main page table  
+    */
+    public function insert_page_data($data){
+        global $main_db; 
+        $query = $main_db->insert($this->table, $data ); 
+        if($query )
+            return $main_db->insert_id; 
+        return NULL;
+
+    }
+
+    public function edit_page( $data , $where ){
+        global $main_db; 
+
+        $query = $main_db->update($this->table, $data , $where ); 
+
+        if( $query )
+            return $query; 
+        return NULL;
+    }
+
+    public function delete_page( $id ){
+        global $main_db;
+        $query = $main_db->query("DELETE FROM {$this->table} WHERE id=".$id);
+
+        if($query)
+            return $query; 
+        return NULL;
     }
 
 }

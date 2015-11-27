@@ -16,6 +16,7 @@ class session {
 
     public function __construct()
     {
+        ob_start();
         session_start();
 
         $this->checkLogin();

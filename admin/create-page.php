@@ -8,8 +8,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="title gray"> Create a page </h1>
-                    <p class="well lead">  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis, delectus distinctio doloremque ducimus eum excepturi explicabo iste, nostrum officia omnis perferendis provident quia quod rem repellat repellendus sed similique.</p>
-                    <p class="well lead"> Click on the Menu to Toggle Sidebar . Hope you enjoy it!</p>
+
+                    <?php
+                    global $sesion; 
+                    echo $sesion->message(); 
+                       
+                        if($_GET['page']=='main'){
+                            include(ADMIN_DIR.'template/form-main-page.php');
+                        }elseif ($_GET['page']=='sub_page') {
+                               include(ADMIN_DIR.'template/form-sub-page.php');
+                        }
+                    ?>
                 </div>
             </div>
         </div>

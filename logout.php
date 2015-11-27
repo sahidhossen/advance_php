@@ -4,4 +4,5 @@ global $sesion;
   $sesion->logout();
 if(!$sesion->is_logedIn()){
     header('Location:'.get_home_url());
+    exit();
 }

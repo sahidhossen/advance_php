@@ -4,7 +4,7 @@ require( dirname(__FILE__) . '/load.php' ); ?>
 global $sesion;
 //echo $sesion->is_logedIn();
 if($sesion->is_logedIn()){
-    header('Location:'.admin_url('home'));
+     safe_redirect(admin_url('home'));
 }
 
 $user = new User();
@@ -16,15 +16,14 @@ if(isset($_POST['submit'])) {
     if($user->is_login($username, $password)){
         $_SESSION['username'] = $username;
         $sesion->message("Welcome Mr. ".$username);
-        header('Location:'.admin_url('home'));
+        safe_redirect(admin_url('home'));
+        
     }else {
         $sesion->message("Sorry your username and password combination error");
-        header('location:'.get_home_url().'/login.php');
+        safe_redirect(get_home_url().'/login.php');
+    
     }
-
-}
-
-?>
+}?>
 
 
 <!doctype html>

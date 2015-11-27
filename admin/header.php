@@ -1,17 +1,19 @@
 <?php require_once(dirname(dirname(__FILE__)) . '/load.php');
 global $sesion;
-if(!$sesion->is_logedIn())
-    header('Location:'.get_home_url().'/login.php');
+if(!$sesion->is_logedIn()){ 
+    safe_redirect(get_home_url().'/login.php');
+
+}
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title> Welcome To Admin </title>
-    <link rel="stylesheet" href="<?php echo get_stylesheet_files('bootstrap'); ?>">
-    <link rel="stylesheet" href="<?php echo get_stylesheet_files('bootstrap-theme'); ?>">
-    <link rel="stylesheet" href="<?php echo get_stylesheet_files('font-awesome'); ?>">
-    <link rel="stylesheet" href="<?php echo admin_stylesheet('admin'); ?>">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_files('bootstrap');?>">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_files('bootstrap-theme');?>">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_files('font-awesome');?>">
+    <link rel="stylesheet" href="<?php echo admin_stylesheet('admin');?>">
 
 </head>
 <body>

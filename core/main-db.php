@@ -213,6 +213,9 @@ class main_db{
         return $this->query($sql);
     }
 
+
+
+    
     /*
      * Flush everything before create a query
      * */

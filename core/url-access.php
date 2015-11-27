@@ -90,6 +90,9 @@ function admin_url( $page = '' ){
         case 'edit-page':
             return admin_home().'edit-page.php';
             break;
+        case 'delete-page':
+            return admin_home().'delete-page.php';
+            break;     
         case 'stylesheet_dir':
             return admin_stylesheet();
         break;

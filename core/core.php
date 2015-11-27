@@ -58,3 +58,66 @@ function create_db_connect(){
     }
 }
 
+
+
+
+
+function gus_url(){
+    //echo $abspath_fix = str_replace( '\\', '/', ABSPATH );
+    //echo $script_filename_dir = dirname( $_SERVER['SCRIPT_FILENAME'] );
+    $path = preg_replace( '#/[^/]*$#i', '', $_SERVER['PHP_SELF'] );
+    $shema = is_ssl() ? 'https://' : 'http://';
+    $url = $shema . $_SERVER['HTTP_HOST'] . $path;
+    return rtrim($url);
+}   
+
+function safe_redirect($location, $status=302){
+
+    if( !$location ) {
+        return false; 
+    }else {
+        $location = make_clean_redirect($location);
+        header("Location: $location", true, $status);
+        return true;
+    }
+
+}
+/*
+----------------------- 
+Deferent location
+*/
+
+
+
+
+if ( !function_exists('make_clean_redirect') ) :
+ 
+function make_clean_redirect($location) {
+    $location = preg_replace('|[^a-z0-9-~+_.?#=&;,/:%!*]|i', '', $location);
+    $location = remove_invalid_control($location);
+
+    // remove %0d and %0a from location
+    $strip = array('%0d', '%0a', '%0D', '%0A');
+    $location = _deep_replace($strip, $location);
+    return $location;
+}
+endif;
+
+
+function remove_invalid_control($string) {
+    $string = preg_replace( '/[\x00-\x08\x0B\x0C\x0E-\x1F]/', '', $string); 
+    $string = preg_replace( '/(\\\\0)+/', '', $string ); 
+    return $string;
+}
+
+
+function _deep_replace( $search, $subject ) {
+  $subject = (string) $subject;
+
+  $count = 1;
+  while ( $count ) {
+    $subject = str_replace( $search, '', $subject, $count );
+  }
+
+  return $subject;
+}
